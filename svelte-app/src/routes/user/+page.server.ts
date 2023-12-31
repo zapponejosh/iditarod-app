@@ -4,7 +4,7 @@ export const load = async ({ url, locals: { getSession } }) => {
 	const session = await getSession();
 
 	if (session) {
-		throw redirect(303, '/account');
+		throw redirect(303, '/user/account');
 	}
 
 	return { url: url.origin };

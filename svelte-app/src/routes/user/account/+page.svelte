@@ -13,7 +13,6 @@
 	let loading = false;
 	let fullName: string = profile?.full_name ?? '';
 	let username: string = profile?.username ?? '';
-	let website: string = profile?.website ?? '';
 	let avatarUrl: string = profile?.avatar_url ?? '';
 
 	const handlesubmit: SubmitFunction = () => {
@@ -66,10 +65,6 @@
 				value={form?.username ?? username}
 				required
 			/>
-		</div>
-		<div>
-			<label for="website">Website</label>
-			<input type="text" name="website" id="website" value={form?.website ?? website} />
 		</div>
 		<div>
 			<input

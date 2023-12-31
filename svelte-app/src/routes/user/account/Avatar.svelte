@@ -57,7 +57,6 @@
 
 <div>
 	{#if avatarUrl}
-		<h2>FOUND</h2>
 		<img
 			src={avatarUrl}
 			alt="Avatar"
