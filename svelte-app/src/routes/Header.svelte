@@ -26,8 +26,8 @@
 		align-items: center;
 		justify-content: space-between;
 		padding: 10px;
-		background-color: #333;
-		color: white;
+		background-color: var(--secondary-dark);
+		color: var(--primary-light);
 	}
 
 	.links {
@@ -37,7 +37,15 @@
 
 	a {
 		text-decoration: none;
-		color: white;
+		color: var(--secondary-light);
+	}
+	a:hover {
+		text-decoration: underline;
+		color: var(--accent-2);
+	}
+	a:hover {
+		text-decoration: underline;
+		color: var(--accent-1);
 	}
 
 	img {
