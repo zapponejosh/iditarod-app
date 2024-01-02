@@ -77,6 +77,6 @@
 	</form>
 
 	<form method="post" action="?/signout" use:enhance={handleSignOut}>
-		<div><button class="button block" disabled={loading}>Sign Out</button></div>
+		<div><button class="button block ghost" disabled={loading}>Sign Out</button></div>
 	</form>
 </div>

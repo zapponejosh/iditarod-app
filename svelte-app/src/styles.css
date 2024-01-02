@@ -10,7 +10,7 @@ body {
 	--accent-1: #FFCB7B;
 	--accent-2: #FFFFC1;
 	--accent-3: #44715C;
-	--custom-border: 1px solid #333;
+	--custom-border: 1px solid var(--accent-1);
 	--custom-border-radius: 8px;
 	--custom-spacing: 8px;
 
@@ -242,7 +242,7 @@ button,
 .button {
 	color: var(--primary-dark);
 	border: var(--custom-border);
-	background-color: var(--primary-dark);
+	background-color: var(--secondary-dark);
 	display: inline-block;
 	text-align: center;
 	border-radius: var(--custom-border-radius);
@@ -251,6 +251,13 @@ button,
 	text-align: center;
 	font-size: 0.9rem;
 	text-transform: uppercase;
+}
+
+.button.ghost {
+	color: var(--primary-light);
+	border-color: var(--primary-light);
+	background-color: transparent;
+
 }
 
 button.primary,

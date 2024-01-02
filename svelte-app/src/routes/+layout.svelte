@@ -22,7 +22,7 @@
 </script>
 
 <svelte:head>
-	<title>User Management</title>
+	<title>Iditarod App</title>
 </svelte:head>
 <Header {session} />
 <div class="container" style="padding: 50px 0 100px 0">

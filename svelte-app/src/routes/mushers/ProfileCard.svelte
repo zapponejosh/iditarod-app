@@ -15,9 +15,7 @@
 	<div class="info">
 		<h4>{name} <span class="rookie">{isRookie ? 'R' : ''}</span></h4>
 		<p class="small">{hometown}</p>
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<!-- svelte-ignore a11y-no-static-element-interactions -->
-		<!-- svelte-ignore a11y-missing-attribute -->
+
 		<button
 			class="button primary show-modal"
 			on:click={() => {
@@ -31,17 +29,23 @@
 	.profile-card {
 		border-radius: var(--custom-border-radius);
 		display: flex;
-		/* margin: 70px; */
-		min-width: 350px;
+		min-width: 320px;
+		max-width: 500px;
 		background-color: var(--secondary-dark);
 	}
 
 	img {
 		border-radius: var(--custom-border-radius) 0 0 var(--custom-border-radius);
 		width: 150px;
+		max-width: 150px;
+		min-width: 150px;
 		height: 150px;
 		margin-right: 28px;
 		object-fit: cover;
 		object-position: center top;
+	}
+	.info {
+		white-space: nowrap;
+		overflow: scroll;
 	}
 </style>

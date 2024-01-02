@@ -72,7 +72,7 @@
 	<div style="width: {size}em;">
 		<label for="single" class="button primary block">{uploading ? 'Uploading...' : 'Upload'}</label>
 		<input
-			style="visibility: hidden; position:absolute"
+			style="visibility: hidden; position:absolute; width:10px"
 			type="file"
 			name="single"
 			id="single"

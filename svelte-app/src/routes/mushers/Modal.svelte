@@ -29,7 +29,7 @@
 	dialog {
 		max-width: 32em;
 		border-radius: 0.2em;
-		border: none;
+		border: 1px solid var(--accent-2);
 		padding: 0;
 		background-color: var(--secondary-dark);
 		box-shadow: -1px 1px 3px 2px rgba(66, 65, 65, 0.1);
