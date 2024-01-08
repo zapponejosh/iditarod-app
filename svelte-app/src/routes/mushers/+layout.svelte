@@ -3,11 +3,11 @@
 	import { writable } from 'svelte/store';
 
 	import type { LayoutData } from './$types';
-	import type { Mushers } from '$lib/types';
+	import type { Musher } from '$lib/types';
 
 	export let data: LayoutData;
 
-	const mushers = writable<Mushers[]>();
+	const mushers = writable<Musher[]>();
 
 	$: mushers.set(data.mushers);
 

@@ -3,15 +3,15 @@
 	import { getContext } from 'svelte';
 	import type { Database } from '$lib/supabase';
 	import type { Writable } from 'svelte/store';
-	import type { Mushers } from '$lib/types';
+	import type { Musher } from '$lib/types';
 	import ProfileCard from './ProfileCard.svelte';
 	import Modal from './Modal.svelte';
 
 	let showModal = false;
 	let musherId = 1;
 
-	const musherStore = getContext('mushers') as Writable<Mushers>;
-	let musherData: Mushers[] = [];
+	const musherStore = getContext('mushers') as Writable<Musher>;
+	let musherData: Musher[] = [];
 	const unsubscribe = musherStore.subscribe((value) => {
 		musherData = Array.isArray(value) ? value : [value];
 	});
