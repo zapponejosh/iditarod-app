@@ -7,6 +7,7 @@
 	let showModal = false;
 	let musherId = 1;
 	let selected = data.mushers[0];
+
 	function handleOpenModal(e) {
 		musherId = e.detail.musherId;
 		selected = data.mushers.find((m) => m.musher_id === musherId) || data.mushers[0];
