@@ -1,19 +1,19 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
 	import { getContext } from 'svelte';
-	import type { Database } from '$lib/supabase';
 	import type { Writable } from 'svelte/store';
 	import type { Musher } from '$lib/types';
 	import ProfileCard from './ProfileCard.svelte';
 	import Modal from './Modal.svelte';
+	import ProfilePage from './[name]/+page.svelte';
 
 	let showModal = false;
 	let musherId = 1;
 
-	const musherStore = getContext('mushers') as Writable<Musher>;
+	const musherStore = getContext('mushers') as Writable<Musher[]>;
 	let musherData: Musher[] = [];
 	const unsubscribe = musherStore.subscribe((value) => {
-		musherData = Array.isArray(value) ? value : [value];
+		musherData = value;
 	});
 	let selected = musherData[0];
 
@@ -27,12 +27,15 @@
 
 		showModal = true;
 	}
+
 	onDestroy(() => unsubscribe());
 </script>
 
 <h1>Musher Listings</h1>
 
 <Modal bind:showModal>
+	<!-- TODO figure out how to get route params since I am not getting data from the load function -->
+	<ProfilePage />
 	<div slot="top">
 		<img src={selected.avatar_url} alt="image of {selected.name}" />
 		<div>
@@ -55,6 +58,7 @@
 <div class="grid">
 	{#each musherData as musher}
 		<ProfileCard
+			link={musher.name.toLowerCase().replace(/\s+/g, '-')}
 			name={musher.name}
 			hometown={musher.hometown}
 			avatarUrl={musher.avatar_url}

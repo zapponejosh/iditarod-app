@@ -1,6 +1,4 @@
 <script lang="ts">
-	import type { Database } from '$lib/supabase';
-
 	export let showModal: Boolean;
 
 	let dialog: HTMLDialogElement;
@@ -11,7 +9,10 @@
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
 <dialog
 	bind:this={dialog}
-	on:close={() => (showModal = false)}
+	on:close={() => {
+		history.back();
+		showModal = false;
+	}}
 	on:click|self={() => dialog.close()}
 >
 	<!-- svelte-ignore a11y-no-static-element-interactions -->

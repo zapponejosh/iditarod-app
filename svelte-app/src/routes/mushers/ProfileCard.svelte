@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { pushState } from '$app/navigation';
 	import { createEventDispatcher } from 'svelte';
 
 	export let name: string | null = 'Test name';
@@ -6,6 +7,16 @@
 	export let avatarUrl: string | null = 'https://placehold.co/600x400';
 	export let isRookie: boolean | null;
 	export let id: number;
+	export let link: string;
+
+	async function onProfileClick(e: MouseEvent & { currentTarget: HTMLAnchorElement }) {
+		if (e.metaKey || e.ctrlKey) return;
+		e.preventDefault();
+		dispatch('open', { musherId: id });
+
+		const { href } = e.currentTarget;
+		pushState(href, {});
+	}
 
 	const dispatch = createEventDispatcher();
 </script>
@@ -16,11 +27,13 @@
 		<h4>{name} <span class="rookie">{isRookie ? 'R' : ''}</span></h4>
 		<p class="small">{hometown}</p>
 
-		<button
+		<a
+			href="/mushers/{link}"
 			class="button primary show-modal"
-			on:click={() => {
+			on:click={(e) => {
 				dispatch('open', { musherId: id });
-			}}>View Profile</button
+				onProfileClick(e);
+			}}>View Profile</a
 		>
 	</div>
 </div>
