@@ -1,19 +1,33 @@
 <script lang="ts">
+	import { onDestroy } from 'svelte';
+	import { getContext } from 'svelte';
+	import type { Database } from '$lib/supabase';
+	import type { Writable } from 'svelte/store';
+	import type { Mushers } from '$lib/types';
 	import ProfileCard from './ProfileCard.svelte';
 	import Modal from './Modal.svelte';
 
-	export let data;
-
 	let showModal = false;
 	let musherId = 1;
-	let selected = data.mushers[0];
 
-	function handleOpenModal(e) {
+	const musherStore = getContext('mushers') as Writable<Mushers>;
+	let musherData: Mushers[] = [];
+	const unsubscribe = musherStore.subscribe((value) => {
+		musherData = Array.isArray(value) ? value : [value];
+	});
+	let selected = musherData[0];
+
+	function findById(id: number) {
+		return musherData?.find((m) => m.musher_id === id) || null;
+	}
+
+	function handleOpenModal(e: CustomEvent) {
 		musherId = e.detail.musherId;
-		selected = data.mushers.find((m) => m.musher_id === musherId) || data.mushers[0];
+		selected = findById(musherId) || musherData?.[0];
 
 		showModal = true;
 	}
+	onDestroy(() => unsubscribe());
 </script>
 
 <h1>Musher Listings</h1>
@@ -39,7 +53,7 @@
 </Modal>
 
 <div class="grid">
-	{#each data.mushers as musher}
+	{#each musherData as musher}
 		<ProfileCard
 			name={musher.name}
 			hometown={musher.hometown}

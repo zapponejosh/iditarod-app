@@ -4,3 +4,10 @@ export const load = ({ params }) => {
 		name: params.name
 	};
 };
+
+// name
+// location
+// website
+// bio
+// future: current standings
+// IsRookie
